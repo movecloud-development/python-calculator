@@ -36,7 +36,7 @@ jobs:
           key: ${{ secrets.EC2_SSH_PRIVATE_KEY }}  # Replace with your EC2 instance SSH private key (base64-encoded)
           port: 22
           script: |
-            sudo cd /tmp/python-calculator
+            sudo cd /tmp/github/workspace
             sudo python3 -m venv env;source env/bin/activate
             sudo yum install python3-pip -y
             sudo pip3 install --upgrade pip
