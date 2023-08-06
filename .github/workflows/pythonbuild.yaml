@@ -39,6 +39,6 @@ jobs:
             sudo cd /tmp/github/workspace
             sudo python3 -m venv env;source env/bin/activate
             sudo yum install python3-pip -y
-            sudo pip3 install -r requirements.txt
-            sudo python app.py
+            sudo pip3 install -r /tmp/github/workspace/requirements.txt
+            sudo python /tmp/github/workspace/app.py
           
