@@ -16,12 +16,12 @@ on:
           key: ${{ secrets.EC2_SSH_PRIVATE_KEY }}  # Replace with your EC2 instance SSH private key (base64-encoded)
           port: 22
           script: |
-          sudo mkdir /tmp/pythonwebapp
-          sudo cd /tmp/pythonwebapp
-          sudo git clone https://github.com/UltiRequiem/flask-calculator.git
-          sudo cd flask-calculator
-          sudo python3 -m venv env;source env/bin/activate
-          sudo pip install --upgrade pip
-          sudo pip install -r requirements.txt
-          sudo python app.py
+            sudo mkdir /tmp/pythonwebapp
+            sudo cd /tmp/pythonwebapp
+            sudo git clone https://github.com/UltiRequiem/flask-calculator.git
+            sudo cd flask-calculator
+            sudo python3 -m venv env;source env/bin/activate
+            sudo pip install --upgrade pip
+            sudo pip install -r requirements.txt
+            sudo python app.py
           
