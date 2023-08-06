@@ -21,7 +21,7 @@ jobs:
           host: ${{ secrets.EC2_HOST }}  # Replace with your EC2 instance public IP or hostname
           username: ${{ secrets.EC2_USERNAME }}  # Replace with your EC2 instance username
           key: ${{ secrets.EC2_SSH_PRIVATE_KEY }}  # Replace with your EC2 instance SSH private key (base64-encoded)
-          source: "python-calculator"
+          source: "/home/runner/work/python-calculator/python-calculator"
           # source: "/home/runner/work/spring-petclinic/spring-petclinic/file1.txt"
           target: "/tmp"  # Replace with the target path on the EC2 instance
           # target: "/home"
