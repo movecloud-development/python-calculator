@@ -5,6 +5,7 @@ on:
     branches:
       - main
 jobs:
+  deploy:
     steps:
       - name: Run Spring Application (via SSH)
         uses: appleboy/ssh-action@master
