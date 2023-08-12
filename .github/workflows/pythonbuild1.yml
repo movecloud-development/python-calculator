@@ -11,11 +11,11 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v3   #shared library
         with:
-        repository: 'movecloud-development/python-calculator'
+          repository: 'movecloud-development/python-calculator'
       - name: Set up Python
         uses: actions/setup-python@v2
         with:
-        python-version: 3.x
+          python-version: 3.x
       - name: python	 
         run: |
           python -m pip install --upgrade pip
@@ -25,14 +25,14 @@ jobs:
       - name: Copy JAR to EC2 Instance (via SSH)
         uses: appleboy/scp-action@master
         with:
-        host: ${{ secrets.EC2_HOST }}  # Replace with your EC2 instance public IP or hostname
-        username: ${{ secrets.EC2_USERNAME }}  # Replace with your EC2 instance username
-        key: ${{ secrets.EC2_SSH_PRIVATE_KEY }}  # Replace with your EC2 instance SSH private key (base64-encoded)
-        source: "*"
+          host: ${{ secrets.EC2_HOST }}  # Replace with your EC2 instance public IP or hostname
+          username: ${{ secrets.EC2_USERNAME }}  # Replace with your EC2 instance username
+          key: ${{ secrets.EC2_SSH_PRIVATE_KEY }}  # Replace with your EC2 instance SSH private key (base64-encoded)
+          source: "*"
           # source: "*"
-        target: "/tmp"  # Replace with the target path on the EC2 instance
+          target: "/tmp"  # Replace with the target path on the EC2 instance
           # target: "/home"
-        debug: "true"
+          debug: "true"
       - name: Copy JAR to EC2 Instance (via SSH)  
         run: |
          ssh ec2-user@3.236.189.173 'cd /tmp && source venv/bin/activate && nohup python app.py > app.log 2>&1 &'
