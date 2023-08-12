@@ -31,11 +31,21 @@ jobs:
           username: ${{ secrets.EC2_USERNAME }}  # Replace with your EC2 instance username
           key: ${{ secrets.EC2_SSH_PRIVATE_KEY }}  # Replace with your EC2 instance SSH private key (base64-encoded)
           
-          source: "*"
+          source: "/home/runner/work/python-calculator/python-calculator"
           # source: "*"
           target: "/tmp"  # Replace with the target path on the EC2 instance
           # target: "/home"
           debug: "true"
-      - name: Copy JAR to EC2 Instance (via SSH)  
-        run: |
-         ssh ec2-user@3.236.189.173 'cd /tmp && source venv/bin/activate && nohup python app.py > app.log 2>&1 &'
+      # - name: Copy JAR to EC2 Instance (via SSH)  
+      #   run: |
+      #    ssh ec2-user@3.236.189.173 'cd /tmp && source venv/bin/activate && nohup python app.py > app.log 2>&1 &'
+
+      - name: Run python Application (via SSH)
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ secrets.EC2_HOST }}  # Replace with your EC2 instance public IP or hostname
+          username: ${{ secrets.EC2_USERNAME }}  # Replace with your EC2 instance username
+          key: ${{ secrets.EC2_SSH_PRIVATE_KEY }}  # Replace with your EC2 instance SSH private key (base64-encoded)
+          port: 22
+          script: |
+            pwd && ls && cd /tmp/ && source venv/bin/activate && nohup python app.py > app.log 2>&1 &
