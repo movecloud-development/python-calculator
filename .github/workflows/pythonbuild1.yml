@@ -22,12 +22,15 @@ jobs:
           python -m venv venv
           source venv/bin/activate
           pip install -r requirements.txt
+      - name: copying the content
+        run: pwd && ls
       - name: Copy JAR to EC2 Instance (via SSH)
         uses: appleboy/scp-action@master
         with:
           host: ${{ secrets.EC2_HOST }}  # Replace with your EC2 instance public IP or hostname
           username: ${{ secrets.EC2_USERNAME }}  # Replace with your EC2 instance username
           key: ${{ secrets.EC2_SSH_PRIVATE_KEY }}  # Replace with your EC2 instance SSH private key (base64-encoded)
+          
           source: "*"
           # source: "*"
           target: "/tmp"  # Replace with the target path on the EC2 instance
