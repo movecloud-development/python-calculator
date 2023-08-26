@@ -38,3 +38,21 @@ pip install -r requirements.txt
 ## License
 
 This project is licensed under the [MIT](./LICENSE) License.
+
+
+
+
+command for build and run the docker image 
+
+docker build -t <image_name> .
+
+docker run -p 3002:3001 -it <image_name or image_id>
+
+to get the list of running containers
+
+
+docker ps -la 
+
+to get the list of created images
+
+docker images
