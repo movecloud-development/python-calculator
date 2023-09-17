@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: my-python-web-app
+spec:
+  replicas: 1  # Adjust the number of replicas as needed
+  selector:
+    matchLabels:
+      app: my-python-web-app
+  template:
+    metadata:
+      labels:
+        app: my-python-web-app
+    spec:
+      containers:
+      - name: my-python-web-app
+        imagePullPolicy: IfNotPresent
+        image: saivinayn7/kube_practice:latest  # Use the image you built
+        ports:
+        - containerPort: 3000  # Port your app listens on
+      imagePullSecrets:
+      - name: dockerhub-secret
