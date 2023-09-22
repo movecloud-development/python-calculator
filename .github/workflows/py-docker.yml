@@ -39,9 +39,9 @@ jobs:
 
       - name: Push Docker Image Tarball to S3
         run: |
-          aws s3 cp python-calculator-app.tar s3://your-s3-bucket/python-calculator-app.tar
+          aws s3 cp python-calculator-app.tar s3://terraformlab-1/python-calculator-app.tar
         env:
-          S3_BUCKET: your-s3-bucket
+          S3_BUCKET: terraformlab-1
 
       - name: Copy Docker Image Tarball to EC2 Instance (via SSH)
         uses: appleboy/scp-action@master
