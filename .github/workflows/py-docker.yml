@@ -61,6 +61,10 @@ jobs:
           key: ${{ secrets.EC2_SSH_PRIVATE_KEY }}  # Replace with your EC2 instance SSH private key (base64-encoded)
           port: 22
           script: |
-            cd /home/ec2-user
+            sudo yum update -y
+            sudo yum install docker -y
+            sudo service docker start
+            sudo usermod -a -G docker ec2-user
+            cd /home/ec2-user/github/workspace/
             docker load -i python-calculator-app.tar
             docker run -d --name python-calculator-app -p 80:8080 python-calculator-app
