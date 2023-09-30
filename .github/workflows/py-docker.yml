@@ -50,7 +50,7 @@ jobs:
           username: ${{ secrets.EC2_USERNAME }}  # Replace with your EC2 instance username
           key: ${{ secrets.EC2_SSH_PRIVATE_KEY }}  # Replace with your EC2 instance SSH private key (base64-encoded)
           source: "${{ github.workspace }}/python-calculator-app.tar"
-          target: "/tmp/python-calculator-app.tar"
+          target: "/home/python-calculator-app.tar"
           debug: "true"
 
       - name: Load Docker Image from Tarball and Run (via SSH)
@@ -61,6 +61,6 @@ jobs:
           key: ${{ secrets.EC2_SSH_PRIVATE_KEY }}  # Replace with your EC2 instance SSH private key (base64-encoded)
           port: 22
           script: |
-            cd /tmp
+            cd /home
             docker load -i python-calculator-app.tar
             docker run -d --name python-calculator-app -p 80:8080 python-calculator-app
