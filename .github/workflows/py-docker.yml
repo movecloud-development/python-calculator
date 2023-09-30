@@ -66,5 +66,5 @@ jobs:
             sudo service docker start
             sudo usermod -a -G docker ec2-user
             cd /home/ec2-user/github/workspace/
-            docker load -i python-calculator-app.tar
-            docker run -d --name python-calculator-app -p 80:8080 python-calculator-app
+            sudo docker load -i python-calculator-app.tar
+            sudo docker run -d --name python-calculator-app -p 80:8080 python-calculator-app
